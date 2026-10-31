@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- eSIM 已在本机型移除：留空数组即表示没有任何内嵌 eUICC。
+         不能直接删掉这个数组，否则 EsimSwitcher 的 BootCompletedReceiver
+         在 getIntArray() 时会抛 Resources.NotFoundException（开机崩溃）。
+         留空后 isNotEmpty() 为 false，EsimSettingsActivity 会被禁用。 -->
+    <integer-array name="non_removable_euicc_slots" />
+</resources>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+
+     设置里 Lineage 新增条目缺失的简体中文翻译（上游 values-zh-rCN 未覆盖）。
+     新增条目时同步更新 packages/apps/Settings/res/values/custom_strings.xml 的英文原文。
+-->
+<resources>
+    <!-- 充电控制 -->
+    <string name="charging_control_title">充电控制</string>
+    <string name="charging_control_mode_auto_summary">根据已设置的闹钟自动决定何时开始充电</string>
+    <string name="charging_control_mode_custom_summary">设定目标时间，到点充满</string>
+    <string name="charging_control_mode_limit_summary">充电限制在指定电量</string>
+    <string name="charging_control_start_time_summary">在 %s 之后开始充电时，充电控制生效</string>
+    <string name="charging_control_target_time_summary">电池将在 %s 前充满</string>
+    <string name="charging_control_limit_summary">当前限制：%d%%</string>
+    <string name="reset">重置</string>
+
+    <!-- LiveDisplay / 屏幕色彩 -->
+    <string name="live_display_summary">根据时间和环境光优化屏幕，提升可读性并减轻眼睛疲劳</string>
+    <string name="live_display_mode">显示模式</string>
+    <string name="live_display_color_temperature_title">色温</string>
+    <string name="live_display_color_temperature_summary">日间：%1$dK　夜间：%2$dK</string>
+    <string name="live_display_color_temperature_label">%1$dK</string>
+    <string name="live_display_day">日间</string>
+    <string name="live_display_night">夜间</string>
+    <string name="live_display_outdoor_mode_title">自动户外模式</string>
+    <string name="live_display_outdoor_mode_summary">强光下自动提高亮度和饱和度</string>
+    <string name="live_display_anti_flicker_title">防闪烁</string>
+    <string name="live_display_anti_flicker_summary">低光环境下减少闪烁、减轻眼睛疲劳。可能降低色彩准确度并影响部分内容的显示方式。</string>
+    <string name="live_display_low_power_title">降低功耗</string>
+    <string name="live_display_low_power_summary">在不损失画质的前提下以最低功耗显示</string>
+    <string name="live_display_enhance_color_title">增强色彩</string>
+    <string name="live_display_enhance_color_summary">提升肤色、风景等图像的色彩鲜艳度</string>
+    <string name="live_display_reading_mode_title">阅读模式</string>
+    <string name="live_display_reading_mode_summary">灰度模式，适合长时间阅读</string>
+
+    <string name="live_display_color_profile_title">色彩模式</string>
+    <string name="live_display_color_profile_standard_title">标准</string>
+    <string name="live_display_color_profile_standard_summary">准确的色彩与明亮的白色</string>
+    <string name="live_display_color_profile_natural_title">自然</string>
+    <string name="live_display_color_profile_natural_summary">真实的色彩与肤色</string>
+    <string name="live_display_color_profile_dynamic_title">动态</string>
+    <string name="live_display_color_profile_dynamic_summary">增强的色彩与明亮的白色</string>
+    <string name="live_display_color_profile_cinema_title">影院</string>
+    <string name="live_display_color_profile_cinema_summary">视频色彩完美还原</string>
+    <string name="live_display_color_profile_astronomy_title">天文</string>
+    <string name="live_display_color_profile_astronomy_summary">深红色调，保护夜视能力</string>
+    <string name="live_display_color_profile_photography_title">摄影</string>
+    <string name="live_display_color_profile_photography_summary">照片色彩完美还原</string>
+    <string name="live_display_color_profile_basic_title">基础</string>
+    <string name="live_display_color_profile_basic_summary">使用未校准的显示</string>
+    <string name="live_display_color_profile_adaptive_title">自适应</string>
+    <string name="live_display_color_profile_adaptive_summary">色彩随环境光自动调整</string>
+    <string name="live_display_color_profile_reading_title">阅读</string>
+    <string name="live_display_color_profile_reading_summary">更暖的色调，减轻眼睛疲劳</string>
+    <string name="live_display_color_profile_srgb_title">sRGB</string>
+    <string name="live_display_color_profile_srgb_summary">色彩符合 sRGB 色域</string>
+    <string name="live_display_color_profile_dci_p3_title">DCI-P3</string>
+    <string name="live_display_color_profile_dci_p3_summary">色彩符合 DCI-P3 色域</string>
+
+    <!-- 色彩校准 -->
+    <string name="color_calibration_title">色彩校准</string>
+    <string name="color_calibration_summary">校准屏幕色彩</string>
+    <string name="color_red_title">红色</string>
+    <string name="color_green_title">绿色</string>
+    <string name="color_blue_title">蓝色</string>
+    <string name="picture_adjustment_title">画面调整</string>
+</resources>
