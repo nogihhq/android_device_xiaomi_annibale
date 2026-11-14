@@ -1,18 +1,5 @@
 # Unpinned blobs from annibale-user 16 BP2A.250605.031.A3 OS3.0.301.0.WPKMIXM release-keys
 
-# IFAA：预编译闭源 APK（Soong 模块见 vendor/xiaomi/annibale/Android.bp 的 IFAAServicePrebuilt）
-product/app/IFAAService/IFAAService.apk
-# SOTER：预编译闭源 APK（Soong 模块见 vendor/xiaomi/annibale/Android.bp 的 SoterServicePrebuilt）
-product/app/SoterService/SoterService.apk
-
-# NFC 小米支付四件套 + RtMiCloudSDK：预编译闭源 APK（非 dump 提取，源自 /home/haoqian 下载）
-# Soong 模块见 vendor/xiaomi/annibale/Android.bp（TsmClient/NextPay/DigitalKey/UnionPayTsm/RtMiCloudSDK）
-system/priv-app/TsmClient/TsmClient.apk
-system/priv-app/NextPay/NextPay.apk
-system/priv-app/DigitalKey/DigitalKey.apk
-system/priv-app/UnionPayTsm/UnionPayTsm.apk
-system/app/RtMiCloudSDK/RtMiCloudSDK.apk
-
 # ACDB
 odm/etc/acdbdata/Mi/sia91xx/Mi_acdb_cal_sia.acdb
 odm/etc/acdbdata/Mi/Ext_AiOff_fixed.eai
@@ -2103,7 +2090,7 @@ odm/etc/camera/cameradfx_config.json
 odm/etc/camera/cameraopt.json
 odm/etc/camera/cameraopt_perf.json
 odm/etc/camera/cameraopt_reclaim.json
-odm/etc/camera/cameraopt_reservemem.json
+#odm/etc/camera/cameraopt_reservemem.json
 odm/etc/camera/camerascene.json
 odm/etc/camera/camxoverridesettings.txt
 odm/etc/camera/com.xiaomi.dcal.w_07.t_01.golden
@@ -2890,9 +2877,6 @@ vendor/lib64/rfs/dsp/libvpp_svc_skel.so
 vendor/lib64/rfs/dsp/libvpp_vqa_networks.so
 vendor/lib64/rfs/dsp/libvpt_action_recognition.so
 vendor/lib64/rfs/dsp/libworker_pool.so
-
-# Euicc
-mi_ext/product/priv-app/EuiccGoogle/EuiccGoogle.apk:product/priv-app/EuiccGoogle/EuiccGoogle.apk;PRESIGNED
 
 # Fingerprint
 odm/etc/vintf/manifest/fod-aidl.xml
