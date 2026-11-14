@@ -1,5 +1,18 @@
 # Unpinned blobs from annibale-user 16 BP2A.250605.031.A3 OS3.0.301.0.WPKMIXM release-keys
 
+# IFAA：预编译闭源 APK（Soong 模块见 vendor/xiaomi/annibale/Android.bp 的 IFAAServicePrebuilt）
+product/app/IFAAService/IFAAService.apk
+# SOTER：预编译闭源 APK（Soong 模块见 vendor/xiaomi/annibale/Android.bp 的 SoterServicePrebuilt）
+product/app/SoterService/SoterService.apk
+
+# NFC 小米支付四件套 + RtMiCloudSDK：预编译闭源 APK（非 dump 提取，源自 /home/haoqian 下载）
+# Soong 模块见 vendor/xiaomi/annibale/Android.bp（TsmClient/NextPay/DigitalKey/UnionPayTsm/RtMiCloudSDK）
+system/priv-app/TsmClient/TsmClient.apk
+system/priv-app/NextPay/NextPay.apk
+system/priv-app/DigitalKey/DigitalKey.apk
+system/priv-app/UnionPayTsm/UnionPayTsm.apk
+system/app/RtMiCloudSDK/RtMiCloudSDK.apk
+
 # ACDB
 odm/etc/acdbdata/Mi/sia91xx/Mi_acdb_cal_sia.acdb
 odm/etc/acdbdata/Mi/Ext_AiOff_fixed.eai

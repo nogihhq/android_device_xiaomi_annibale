@@ -2,3 +2,14 @@ allow platform_app_36 hal_postprocservice_service:service_manager find;
 allow platform_app_36 proc_pressure_cpu:file { getattr open read write };
 allow platform_app_36 proc_pressure_io:file { getattr open read write };
 allow platform_app_36 proc_pressure_mem:file { getattr open read write };
+
+# ---- 支付链（IFAA）----
+# IFAAService 为预编译闭源 APK，targetSdk 35，seapp_contexts 把它映射到
+# platform_app_36 而非 platform_app（见 system/sepolicy/private/seapp_contexts
+# 的 targetSdkVersion>=36 规则），所以引用 platform_app_all 匹配不到。
+# 实测 avc：scontext=u:r:platform_app_36:s0:c512,c768 pid=10016 uid=10210
+#          tcontext=u:object_r:hal_mlipay_service:s0 tclass=service_manager { find } permissive=0
+# 只放行 hal_mlipay_service。vendor_hal_qspmhal_service 有全局 neverallow
+# （recovery_sepolicy.cil:142109 的 base_typeattr_1472 = 全部非豁免 domain 均不可 find），
+# 任何 app 域都对它 find 会直接触发 neverallow，绝不能加。
+allow platform_app_36 hal_mlipay_service:service_manager find;

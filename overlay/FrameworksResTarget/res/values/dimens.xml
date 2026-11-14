@@ -13,8 +13,10 @@
          calculate the status bar height. -->
     <dimen name="status_bar_height_default">@dimen/status_bar_height</dimen>
 
-    <!-- Default radius of the software rounded corners. -->
-    <dimen name="rounded_corner_radius">140.0px</dimen>
+    <!-- Default radius of the software rounded corners.
+         HyperOS 实测：dumpsys window displays -> mRoundedCorners radius=172，
+         center=(172,172)/(984,172)/(984,2338)/(172,2338)，density=480(3x)。 -->
+    <dimen name="rounded_corner_radius">172.0px</dimen>
 
     <!-- Radius of the software rounded corners at the top of the display in its natural
         orientation. If zero, the value of rounded_corner_radius is used. -->

@@ -265,3 +265,20 @@ ro.config.vc_call_vol_steps=11
 
 # Wi-Fi
 wifi.aware.interface=wifi-aware0
+
+# 指纹 / 支付预置属性（取自 HyperOS 4.0.5.0.XPKCNXM 实机 getprop，
+# 供闭源 IFAAService 与指纹 HAL 使用；开源版读的是 fp.udfps.*，闭源版读 fp.fod.*）
+persist.vendor.sys.fp.vendor=qcom_us
+persist.vendor.sys.fp.fod.location.X_Y=504,1831
+persist.vendor.sys.fp.fod.size.width_height=148,148
+persist.vendor.sys.fp.fod.slide=true
+persist.vendor.sys.fp.fod.slide.step=15
+persist.vendor.sys.fp.fod.us.target=495,1814,660,1995
+persist.vendor.sys.pay.ifaa=1
+persist.vendor.sys.pay.fido=0058#0000
+persist.vendor.sys.pay.fido.cert=5
+persist.vendor.sys.pay.fido2=XMCTAP-000000000
+persist.vendor.sys.pay.fido2key=1
+persist.vendor.sys.pay.fido2pass=XMCTAP-000000002
+persist.vendor.sys.pay.fido2passkey=1
+persist.vendor.sys.pay.fidokey=1

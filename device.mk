@@ -42,6 +42,12 @@ PRODUCT_PACKAGES += \
     update_engine_sideload \
     update_verifier
 
+# CTA responder stub: intercepts MiuiCamera's
+# miui.intent.action.SYSTEM_PERMISSION_DECLARE_NEW (package
+# com.miui.securitycenter) and returns resultCode 1 = "user agreed".
+PRODUCT_PACKAGES += \
+    MiuiCtaStub
+
 # API levels
 BOARD_SHIPPING_API_LEVEL := 202404
 PRODUCT_SHIPPING_API_LEVEL := 36
@@ -167,12 +173,16 @@ PRODUCT_PACKAGES += \
 
 # Euicc
 PRODUCT_PACKAGES += \
-    EsimSwitcherXiaomi \
-    XiaomiEuicc
+    EsimSwitcherXiaomi
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/default-permissions-com.google.android.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions-com.google.android.euicc.xml \
     $(LOCAL_PATH)/configs/permissions/privapp-permissions-com.google.android.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-com.google.android.euicc.xml
+
+# Privileged permission allowlist for the prebuilt Xiaomi NFC/TSM apps
+# (without it system_server throws "not in privileged permission allowlist" and bootloops)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-uwu.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-uwu.xml
 
 # Fastboot
 PRODUCT_PACKAGES += \
@@ -220,8 +230,28 @@ PRODUCT_PACKAGES += \
 TARGET_USES_VULKAN := true
 
 # IFAAService
+# 用预编译闭源 APK（模块定义见 vendor/xiaomi/annibale/Android.bp 的 IFAAService）。
+# 开源版 hardware/xiaomi/packages/IFAAService 读 persist.vendor.sys.fp.udfps.*，
+# 闭源版读 persist.vendor.sys.fp.fod.*，两者不可互换。
 PRODUCT_PACKAGES += \
-    IFAAService
+    IFAAServicePrebuilt
+
+# SoterService（Tencent SOTER 服务，包名 com.tencent.soter.soterserver）
+# 预编译闭源 APK，模块见 vendor/xiaomi/annibale/Android.bp 的 SoterService。
+# 依赖 vendor.qti.hardware.soter ISoter/default 的 vintf 片段，否则 SIGABRT。
+PRODUCT_PACKAGES += \
+    SoterService
+
+# NFC 小米支付四件套 + RtMiCloudSDK（预编译闭源，模块见 vendor/xiaomi/annibale/Android.bp）
+# 编译桩 miui-stubs 进 PRODUCT_PACKAGES；真机 BOOTCLASSPATH 的 miui-framework.jar 不进树，
+# 桩类与真机同名同签名、仅缺实现体。决策见 HANDOFF-xiaomi-nfc-apk-port.md。
+PRODUCT_PACKAGES += \
+    miui-stubs \
+    TsmClient \
+    NextPay \
+    DigitalKey \
+    UnionPayTsm \
+    RtMiCloudSDK
 
 # IPACM
 PRODUCT_PACKAGES += \
@@ -268,7 +298,7 @@ PRODUCT_COPY_FILES += \
 
 # Lineage Health
 PRODUCT_PACKAGES += \
-    vendor.lineage.health-service.default
+    vendor.uwu.health-service.default
 
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/xm_power/charger/smart_charge/smart_night)
 $(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
@@ -312,9 +342,7 @@ PRODUCT_PACKAGES += \
     FrameworksResCommon \
     FrameworksResOverlayEsim \
     FrameworksResTarget \
-    LineageApertureOverlay \
-    LineageSDKOverlay \
-    LineageSettingsOverlay \
+    UwuSettingsOverlay \
     NfcOverlayAnnibale \
     SecureElementResTarget \
     SettingsResCommon \
@@ -324,13 +352,15 @@ PRODUCT_PACKAGES += \
     WifiResCommon \
     WifiResTarget_spf
 
+PRODUCT_PACKAGE_OVERLAYS += device/xiaomi/annibale/overlay
+
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Power
 $(call soong_config_set,power_libperfmgr,mode_extension_lib,//$(LOCAL_PATH):libpowermode-ext-annibale)
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
+    android.hardware.power-service.uwu-libperfmgr \
     libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
@@ -437,7 +467,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     telephony-ext \
-    xiaomi-telephony-stub
+    xiaomi-telephony-stub \
+    miui-stubs
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.cdma.xml \

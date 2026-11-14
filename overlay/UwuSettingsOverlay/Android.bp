@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "LineageSettingsOverlay",
+    name: "UwuSettingsOverlay",
     system_ext_specific: true,
 }

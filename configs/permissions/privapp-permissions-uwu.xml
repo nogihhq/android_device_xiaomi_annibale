@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Privileged permission allowlist for the prebuilt Xiaomi NFC/TSM apps.
+    Without this file system_server throws at systemReady and bootloops:
+      IllegalStateException: Signature|privileged permissions not in privileged
+      permission allowlist: {com.miui.tsmclient (TsmClient): ... , com.xiaomi.digitalkey (DigitalKey): ...}
+    Added 2026-11-11 after flashing the NFC build (HANDOFF-xiaomi-nfc-apk-port.md).
+-->
+<permissions>
+    <privapp-permissions package="com.miui.tsmclient">
+        <permission name="android.permission.REAL_GET_TASKS" />
+        <permission name="android.permission.SCHEDULE_EXACT_ALARM" />
+        <permission name="android.permission.WRITE_SECURE_SETTINGS" />
+        <permission name="android.permission.CLEAR_APP_CACHE" />
+        <permission name="android.permission.UWB_PRIVILEGED" />
+        <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+    </privapp-permissions>
+    <privapp-permissions package="com.xiaomi.digitalkey">
+        <permission name="android.permission.UWB_PRIVILEGED" />
+        <permission name="android.permission.SECURE_ELEMENT_PRIVILEGED_OPERATION" />
+    </privapp-permissions>
+</permissions>

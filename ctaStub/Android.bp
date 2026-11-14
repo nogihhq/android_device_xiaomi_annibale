@@ -1,0 +1,6 @@
+android_app {
+    name: "MiuiCtaStub",
+    srcs: ["src/**/*.java"],
+    manifest: "AndroidManifest.xml",
+    sdk_version: "current",
+}
