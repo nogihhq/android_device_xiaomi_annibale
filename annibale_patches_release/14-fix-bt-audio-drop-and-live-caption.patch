@@ -1,0 +1,35 @@
+# Fix Bluetooth audio drop after switching apps and enable Live Caption
+diff --git a/overlay/FrameworksResCommon/res/values/config.xml b/overlay/FrameworksResCommon/res/values/config.xml
+index 304ac03..5c42c99 100644
+--- a/overlay/FrameworksResCommon/res/values/config.xml
++++ b/overlay/FrameworksResCommon/res/values/config.xml
+@@ -203,4 +203,7 @@
+ 
+     <!-- Specifies the maximum burn-in offset vertically. -->
+     <integer name="config_burnInProtectionMaxVerticalOffset">40</integer>
++    <!-- Live Captions provided by Google's Device Personalization Service package -->
++    <string name="config_defaultSystemCaptionsManagerService" translatable="false">com.google.android.as/com.google.android.apps.miphone.aiai.captions.SystemCaptionsManagerService</string>
++    <bool name="config_systemCaptionsServiceCallsEnabled" translatable="false">true</bool>
+ </resources>
+diff --git a/props/vendor.prop b/props/vendor.prop
+index abf4c5b..54b6f46 100644
+--- a/props/vendor.prop
++++ b/props/vendor.prop
+@@ -1,7 +1,7 @@
+ # Audio
+ aaudio.hw_burst_min_usec=2000
+-aaudio.mmap_exclusive_policy=2
+-aaudio.mmap_policy=2
++aaudio.mmap_exclusive_policy=1
++aaudio.mmap_policy=1
+ persist.audio.thread.ozonotify=false
+ persist.vendor.audio.auto.scenario=true
+ persist.vendor.audio.misound.disable=true
+@@ -88,6 +88,7 @@ bluetooth.profile.vcp.controller.enabled=true
+ persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac-lhdc-mihc
+ persist.bluetooth.a2dp_offload.disabled=false
+ persist.bluetooth.leaudio_offload.disabled=false
++persist.bluetooth.leaudio.allow.multiple.context=false
+ persist.sys.fflag.override.settings_bluetooth_hearing_aid=false
+ persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac-lhdc-mihc
+ persist.vendor.bt.aac_frm_ctl.enabled=true

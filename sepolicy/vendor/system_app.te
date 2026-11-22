@@ -1,1 +1,6 @@
 binder_call(system_app, vendor_hal_displayfeature_xiaomi_default)
+
+# Soter Service for WeChat Pay
+hal_client_domain(system_app, vendor_hal_soter)
+hal_client_domain(system_app, hal_mlipay)
+allow system_app hal_mlipay_service:service_manager find;

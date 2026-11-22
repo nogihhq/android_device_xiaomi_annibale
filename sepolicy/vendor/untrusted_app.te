@@ -1,0 +1,2 @@
+# 允许普通应用查找充电 HAL（hal_micharge_service 非 protected_service）
+allow untrusted_app hal_micharge_service:service_manager find;

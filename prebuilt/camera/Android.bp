@@ -1,0 +1,10 @@
+android_app_import {
+    name: "AGCCamera",
+    apk: "Camera.apk",
+    presigned: true,
+    privileged: true,
+    dex_preopt: {
+        enabled: false,
+    },
+}
+

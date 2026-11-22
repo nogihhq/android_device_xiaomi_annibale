@@ -1,0 +1,19 @@
+diff --git a/Android.bp b/Android.bp
+index 254ae60..c3fc9f7 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -49327,3 +49327,14 @@ filegroup {
+         "proprietary/vendor/etc/qcril_database/upgrade/other/0015_version_add_iccid_clir_pref_table.sql",
+     ],
+ }
++
++android_app_import {
++    name: "SoterService",
++    owner: "xiaomi",
++    apk: "proprietary/product/app/SoterService/SoterService.apk",
++    certificate: "platform",
++    dex_preopt: {
++        enabled: false,
++    },
++    product_specific: true,
++}

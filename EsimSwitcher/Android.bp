@@ -6,6 +6,7 @@
 
 android_app {
     name: "EsimSwitcherXiaomi",
+    enabled: false,
     certificate: "platform",
     srcs: ["src/**/*.kt"],
     platform_apis: true,
@@ -16,7 +17,7 @@ android_app {
         "androidx.core_core",
         "androidx.preference_preference",
         "extphonelib",
-        "org.uwu.settings.resources",
+        "org.lineageos.settings.resources",
         "SettingsLib",
     ],
     optional_uses_libs: [

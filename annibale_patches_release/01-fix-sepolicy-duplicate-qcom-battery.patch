@@ -1,0 +1,18 @@
+diff --git a/generic/vendor/common/genfs_contexts b/generic/vendor/common/genfs_contexts
+index eee2b2884..496c88bef 100644
+--- a/generic/vendor/common/genfs_contexts
++++ b/generic/vendor/common/genfs_contexts
+@@ -189,7 +189,12 @@ genfscon sysfs /class/qcom-haptics/visense_enabled     u:object_r:vendor_sysfs_h
+ genfscon sysfs /class/qcom-haptics/v_gain_error     u:object_r:vendor_sysfs_haptics:s0
+ genfscon sysfs /class/qcom-haptics/i_gain_error     u:object_r:vendor_sysfs_haptics:s0
+ 
+-genfscon sysfs /class/qcom-battery u:object_r:vendor_sysfs_battery_supply:s0
++# Duplicate of device/xiaomi/annibale/sepolicy/vendor/genfs_contexts:5, which labels
++# /class/qcom-battery as vendor_sysfs_qcom_battery. The annibale HALs
++# (hal_micharge, mi_thermald, hal_usb, hal_lineage_health_default) are granted access
++# to that type, so the device-tree labelling must win. checkpolicy rejects two genfscon
++# entries for the same path, so this generic SoC entry is dropped.
++# genfscon sysfs /class/qcom-battery u:object_r:vendor_sysfs_battery_supply:s0
+ 
+ genfscon sysfs /module/rmnet_aps/parameters u:object_r:vendor_sysfs_rmnet:s0
+ genfscon sysfs /module/rmnet_offload/parameters u:object_r:vendor_sysfs_rmnet:s0

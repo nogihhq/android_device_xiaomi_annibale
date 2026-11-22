@@ -1,0 +1,16 @@
+diff --git a/BoardConfig.mk b/BoardConfig.mk
+index 954e208..f3450f9 100644
+--- a/BoardConfig.mk
++++ b/BoardConfig.mk
+@@ -8,6 +8,11 @@
+ 
+ DEVICE_PATH := device/xiaomi/annibale
+ 
++# MicrodroidBenchmarkApp (packages/modules/Virtualization/tests/benchmark) is pulled in as a
++# test module by the upstream Virtualization repo, but it requires "perf-setup" which does
++# not exist in this tree. No product on this device wants the benchmark app, so allow the
++# missing dependency instead of carrying an unrelated module.
++BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+ BUILD_BROKEN_DUP_RULES := true
+ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+ 

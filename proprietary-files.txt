@@ -4094,3 +4094,7 @@ vendor/lib64/vendor.qti.hardware.wifidisplaysessionl@1.0-halimpl.so
 # Xiaomi MAC address
 vendor/bin/nv_mac
 vendor/lib64/libxiaomi_qmi.so
+# IFAA：预编译闭源 APK（Soong 模块见 vendor/xiaomi/annibale/Android.bp 的 IFAAService）
+product/app/IFAAService/IFAAService.apk
+# SOTER：预编译闭源 APK（Soong 模块见 vendor/xiaomi/annibale/Android.bp 的 SoterService）
+product/app/SoterService/SoterService.apk

@@ -142,6 +142,9 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti.recovery
 
 # Camera
+PRODUCT_PACKAGES += \
+    AGCCamera
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.concurrent.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.concurrent.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -172,8 +175,8 @@ PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
 
 # Euicc
-PRODUCT_PACKAGES += \
-    EsimSwitcherXiaomi
+# PRODUCT_PACKAGES += \
+#     EsimSwitcherXiaomi
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/default-permissions-com.google.android.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions-com.google.android.euicc.xml \
@@ -234,7 +237,7 @@ TARGET_USES_VULKAN := true
 # 开源版 hardware/xiaomi/packages/IFAAService 读 persist.vendor.sys.fp.udfps.*，
 # 闭源版读 persist.vendor.sys.fp.fod.*，两者不可互换。
 PRODUCT_PACKAGES += \
-    IFAAServicePrebuilt
+    IFAAService
 
 # SoterService（Tencent SOTER 服务，包名 com.tencent.soter.soterserver）
 # 预编译闭源 APK，模块见 vendor/xiaomi/annibale/Android.bp 的 SoterService。
@@ -246,7 +249,7 @@ PRODUCT_PACKAGES += \
 # 编译桩 miui-stubs 进 PRODUCT_PACKAGES；真机 BOOTCLASSPATH 的 miui-framework.jar 不进树，
 # 桩类与真机同名同签名、仅缺实现体。决策见 HANDOFF-xiaomi-nfc-apk-port.md。
 PRODUCT_PACKAGES += \
-    miui-stubs \
+    # miui-stubs \
     TsmClient \
     NextPay \
     DigitalKey \
@@ -298,7 +301,7 @@ PRODUCT_COPY_FILES += \
 
 # Lineage Health
 PRODUCT_PACKAGES += \
-    vendor.uwu.health-service.default
+    vendor.lineage.health-service.default
 
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/xm_power/charger/smart_charge/smart_night)
 $(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
@@ -360,7 +363,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Power
 $(call soong_config_set,power_libperfmgr,mode_extension_lib,//$(LOCAL_PATH):libpowermode-ext-annibale)
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.uwu-libperfmgr \
+    android.hardware.power-service.lineage-libperfmgr \
     libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
@@ -468,7 +471,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext \
     xiaomi-telephony-stub \
-    miui-stubs
+    # miui-stubs
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.cdma.xml \

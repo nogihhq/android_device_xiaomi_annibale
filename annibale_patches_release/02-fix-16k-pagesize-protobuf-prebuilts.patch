@@ -1,0 +1,103 @@
+diff --git a/Android.bp b/Android.bp
+index 05a9ff2..4aeab60 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -786,6 +786,10 @@ cc_prebuilt_library_shared {
+ 
+ cc_prebuilt_library_shared {
+     name: "libprotobuf-cpp-full-21.7",
++    // 16K page size: this prebuilt's LOAD segments are 4096-aligned, but the
++    // device runs 16K pages, so check_elf_file rejects it:
++    //   error: Load segment has alignment 4096 but 16384 required.
++    ignore_max_page_size: true,
+     system_ext_specific: true,
+     vendor_available: true,
+     strip: {
+@@ -809,6 +813,10 @@ cc_prebuilt_library_shared {
+ 
+ cc_prebuilt_library_shared {
+     name: "libprotobuf-cpp-lite-21.7",
++    // 16K page size: this prebuilt's LOAD segments are 4096-aligned, but the
++    // device runs 16K pages, so check_elf_file rejects it:
++    //   error: Load segment has alignment 4096 but 16384 required.
++    ignore_max_page_size: true,
+     system_ext_specific: true,
+     vendor_available: true,
+     strip: {
+@@ -831,6 +839,10 @@ cc_prebuilt_library_shared {
+ 
+ cc_prebuilt_library_shared {
+     name: "libprotobuf-cpp-full-21.12-vendorcompat",
++    // 16K page size: this prebuilt's LOAD segments are 4096-aligned, but the
++    // device runs 16K pages, so check_elf_file rejects it:
++    //   error: Load segment has alignment 4096 but 16384 required.
++    ignore_max_page_size: true,
+     stem: "libprotobuf-cpp-full-21.12",
+     vendor: true,
+     strip: {
+@@ -856,6 +868,10 @@ cc_prebuilt_library_shared {
+ 
+ cc_prebuilt_library_shared {
+     name: "libprotobuf-cpp-lite-21.12-vendorcompat",
++    // 16K page size: this prebuilt's LOAD segments are 4096-aligned, but the
++    // device runs 16K pages, so check_elf_file rejects it:
++    //   error: Load segment has alignment 4096 but 16384 required.
++    ignore_max_page_size: true,
+     stem: "libprotobuf-cpp-lite-21.12",
+     vendor: true,
+     strip: {
+@@ -880,6 +896,10 @@ cc_prebuilt_library_shared {
+ 
+ cc_prebuilt_library_shared {
+     name: "libprotobuf-cpp-lite-21.12",
++    // 16K page size: this prebuilt's LOAD segments are 4096-aligned, but the
++    // device runs 16K pages, so check_elf_file rejects it:
++    //   error: Load segment has alignment 4096 but 16384 required.
++    ignore_max_page_size: true,
+     system_ext_specific: true,
+     strip: {
+         none: true,
+@@ -903,6 +923,10 @@ cc_prebuilt_library_shared {
+ 
+ cc_prebuilt_library_shared {
+     name: "libprotobuf-cpp-full-v29",
++    // 16K page size: this prebuilt's LOAD segments are 4096-aligned, but the
++    // device runs 16K pages, so check_elf_file rejects it:
++    //   error: Load segment has alignment 4096 but 16384 required.
++    ignore_max_page_size: true,
+     vendor: true,
+     strip: {
+         none: true,
+@@ -925,6 +949,10 @@ cc_prebuilt_library_shared {
+ 
+ cc_prebuilt_library_shared {
+     name: "libprotobuf-cpp-lite-v29",
++    // 16K page size: this prebuilt's LOAD segments are 4096-aligned, but the
++    // device runs 16K pages, so check_elf_file rejects it:
++    //   error: Load segment has alignment 4096 but 16384 required.
++    ignore_max_page_size: true,
+     vendor: true,
+     strip: {
+         none: true,
+@@ -945,6 +973,10 @@ cc_prebuilt_library_shared {
+ 
+ cc_prebuilt_library_shared {
+     name: "libprotobuf-cpp-full-vendorcompat",
++    // 16K page size: this prebuilt's LOAD segments are 4096-aligned, but the
++    // device runs 16K pages, so check_elf_file rejects it:
++    //   error: Load segment has alignment 4096 but 16384 required.
++    ignore_max_page_size: true,
+     stem: "libprotobuf-cpp-full",
+     vendor: true,
+     strip: {
+@@ -968,6 +1000,10 @@ cc_prebuilt_library_shared {
+ 
+ cc_prebuilt_library_shared {
+     name: "libprotobuf-cpp-lite-vendorcompat",
++    // 16K page size: this prebuilt's LOAD segments are 4096-aligned, but the
++    // device runs 16K pages, so check_elf_file rejects it:
++    //   error: Load segment has alignment 4096 but 16384 required.
++    ignore_max_page_size: true,
+     stem: "libprotobuf-cpp-lite",
+     vendor: true,
+     strip: {

@@ -1,0 +1,71 @@
+# Status bar double tap to sleep gesture implementation
+--- a/frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarView.java
+diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarView.java b/packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarView.java
+index db91ce3c182f..3e36c51e99f2 100644
+--- a/packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarView.java
++++ b/packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarView.java
+@@ -38,6 +38,9 @@ import android.widget.LinearLayout;
+ 
+ import androidx.annotation.NonNull;
+ 
++import android.os.PowerManager;
++import android.provider.Settings;
++import android.view.GestureDetector;
+ import com.android.internal.policy.SystemBarUtils;
+ import com.android.systemui.Gefingerpoken;
+ import com.android.systemui.res.R;
+@@ -72,6 +75,9 @@ public class PhoneStatusBarView extends FrameLayout {
+     private int mDensity;
+     private float mFontScale;
+     private StatusBarLongPressGestureDetector mStatusBarLongPressGestureDetector;
++    private GestureDetector mDoubleTapGestureDetector;
++    private PowerManager mPowerManager;
++
+     private final Region mTouchableRegion = Region.obtain();
+ 
+     /**
+@@ -81,6 +87,20 @@ public class PhoneStatusBarView extends FrameLayout {
+ 
+     public PhoneStatusBarView(Context context, AttributeSet attrs) {
+         super(context, attrs);
++        mPowerManager = context.getSystemService(PowerManager.class);
++        mDoubleTapGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
++            @Override
++            public boolean onDoubleTap(MotionEvent e) {
++                boolean enabled = Settings.Secure.getInt(
++                        mContext.getContentResolver(),
++                        Settings.Secure.DOUBLE_TAP_TO_SLEEP, 1) != 0;
++                if (enabled && mPowerManager != null) {
++                    mPowerManager.goToSleep(e.getEventTime());
++                    return true;
++                }
++                return false;
++            }
++        });
+     }
+ 
+     void setLongPressGestureDetector(
+@@ -242,6 +262,9 @@ public class PhoneStatusBarView extends FrameLayout {
+             // non-interactive.
+             return true;
+         }
++        if (mDoubleTapGestureDetector != null) {
++            mDoubleTapGestureDetector.onTouchEvent(event);
++        }
+         return super.dispatchTouchEvent(event);
+     }
+ 
+--- a/packages/apps/Settings/res/xml/display_settings.xml
+diff --git a/res/xml/display_settings.xml b/res/xml/display_settings.xml
+index 737fcac110e..53be7ef67f8 100644
+--- a/res/xml/display_settings.xml
++++ b/res/xml/display_settings.xml
+@@ -245,7 +245,7 @@
+             android:key="double_tap_to_sleep"
+             android:title="@string/status_bar_double_tap_to_sleep_title"
+             android:summary="@string/status_bar_double_tap_to_sleep_summary"
+-            android:defaultValue="false" />
++            android:defaultValue="true" />
+ 
+         <com.android.settings.custom.preference.SystemSettingSwitchPreference
+             android:key="high_touch_polling_rate_enable"

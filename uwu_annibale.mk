@@ -18,6 +18,7 @@ $(call inherit-product, vendor/uwu/config/common.mk)
 
 # Inherit from the MiuiCamera setup
 $(call inherit-product-if-exists, device/xiaomi/annibale-miuicamera/device.mk)
+PRODUCT_PACKAGES := $(filter-out MiuiCamera, $(PRODUCT_PACKAGES))
 
 # Lineage stuff
 TARGET_EXCLUDES_AUDIOFX := true
