@@ -48,3 +48,5 @@ BUILD_SYSTEM_FINGERPRINT := Redmi/annibale/annibale:17/CP2A.260605.016/OS4.0.5.0
 # 16384 校验，check_elf_file 会大面积报
 # "Load segment has alignment 4096 but 16384 required"。
 PRODUCT_MAX_PAGE_SIZE_SUPPORTED := 4096
+
+-include vendor/uwu-priv/keys/keys.mk
