@@ -5,3 +5,6 @@ allow vendor_qti_init_shell vendor_firmware_data_file:dir rw_dir_perms;
 allow vendor_qti_init_shell vendor_firmware_data_file:file rw_file_perms;
 allow vendor_qti_init_shell vendor_data_file:file { read open getattr };
 allow vendor_qti_init_shell vendor_data_file:dir { read open getattr };
+
+allow vendor_qti_init_shell vendor_camera_data_file:dir { search getattr setattr open read write add_name remove_name rmdir };
+allow vendor_qti_init_shell vendor_camera_data_file:file { getattr open read write setattr unlink rename };

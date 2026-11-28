@@ -4,6 +4,9 @@
 #
 
 on early-boot
+    # Purge stale CAMX EEPROM backups so provider rebuilds them from
+    # live OTP (mixed-ROM /data carry-over can poison the DualSAT OFE)
+    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.camera.eeprom_backup_clean.sh
     chown system graphics /sys/bus/platform/devices/soc:xiaomi_fingerprint/fingerdown
     chmod 0664 /sys/bus/platform/devices/soc:xiaomi_fingerprint/fingerdown
 

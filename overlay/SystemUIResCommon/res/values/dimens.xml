@@ -12,7 +12,7 @@
     <dimen name="rounded_corner_content_padding">100px</dimen>
     <dimen name="status_bar_padding_start">4px</dimen>
     <dimen name="status_bar_padding_end">4px</dimen>
-    <dimen name="status_bar_padding_top">0px</dimen>
+    <dimen name="status_bar_padding_top">20px</dimen>
 
     <!-- QS 头部相关 -->
     <dimen name="qs_header_horizontal_padding">104px</dimen>

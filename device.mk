@@ -377,6 +377,7 @@ PRODUCT_PACKAGES += \
 
 # Rootdir
 PRODUCT_PACKAGES += \
+    init.camera.eeprom_backup_clean.sh \
     init.class_main.sh \
     init.kernel.init_boot-memory.sh \
     init.kernel.post_boot-memory.sh \

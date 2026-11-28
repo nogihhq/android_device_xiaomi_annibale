@@ -124,3 +124,9 @@ prebuilt_etc {
     src: "etc/ueventd.qcom.rc",
     vendor: true,
 }
+
+sh_binary {
+    name: "init.camera.eeprom_backup_clean.sh",
+    src: "bin/init.camera.eeprom_backup_clean.sh",
+    vendor: true,
+}
